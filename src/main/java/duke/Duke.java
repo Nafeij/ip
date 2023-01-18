@@ -5,6 +5,14 @@ import duke.command.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * The main class of the Duke program.
+ *
+ * @see UI
+ * @see TaskList
+ * @see Command
+ * @see Parser
+ */
 public class Duke {
 
     private final UI ui;
@@ -31,7 +39,7 @@ public class Duke {
                 }),
                 new BasicCommand("list"
                         , "list tasks"
-                        , taskList::stringify),
+                        , taskList::toStrings),
                 new ArgCommand("add"
                         , "add task"
                         , new String[]{"\\s"}
@@ -80,6 +88,10 @@ public class Duke {
         }
     }
 
+    /**
+     * The start point of execution of the Duke program.
+     * @param args the command line arguments.
+     */
     public static void main(String[] args) {
         new Duke("data.txt").run();
     }
